@@ -1,7 +1,7 @@
 [project]
 name = "update-lotomania"
 version = "0.1.0"
-description = "Add your description here"
+description = "Ferramenta de atualização do arquivo lotomania.csv da API-Lotomania"
 readme = "README.md"
 authors = [
     { name = "Artur dos Santos Shon", email = "sky_artur@hotmail.com" }
