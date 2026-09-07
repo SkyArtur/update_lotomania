@@ -15,6 +15,7 @@ API_DIR="$(cd "$(dirname "$LOTOMANIA_DESTINATION_FILE")/../../../" && pwd)"
 
 # shellcheck disable=SC2164
 cd "$PROJECT_DIR"
+uv sync -q
 uv run update-lotomania
 
 cd "$API_DIR"

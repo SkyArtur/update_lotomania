@@ -1,19 +1,25 @@
 import os
 from pathlib import Path
 
-__all__ = ['original_file', 'destination_file']
+__all__ = ['API_HOST', 'FILE_DIR', 'LOTOMANIA_ORIGIN_FILE', 'LOTOMANIA_DESTINATION_FILE']
 
-LOTOMANIA_ORIGIN_FILE = os.getenv("LOTOMANIA_ORIGIN_FILE")
-LOTOMANIA_DESTINATION_FILE = os.getenv("LOTOMANIA_DESTINATION_FILE")
+HOME = Path.home()
 
-if not LOTOMANIA_ORIGIN_FILE or not LOTOMANIA_DESTINATION_FILE:
-    raise ValueError("LOTOMANIA_ORIGIN_FILE and LOTOMANIA_DESTINATION_FILE are required env variables")
+API_HOST = HOME / 'Projetos' / 'GitHub' / 'API-Lotomania'
+FILE_DIR = HOME / 'Downloads' / 'Lotomania'
 
-original_file = Path(LOTOMANIA_ORIGIN_FILE)
-destination_file = Path(LOTOMANIA_DESTINATION_FILE)
+LOTOMANIA_ORIGIN_FILE = FILE_DIR / 'Lotomania.xlsx'
+LOTOMANIA_DESTINATION_FILE = API_HOST / 'core' / 'data' / 'file' / 'lotomania.csv'
 
-if not original_file.exists():
-    raise FileNotFoundError(f"File {original_file} not found")
+if not API_HOST.exists():
+    raise FileNotFoundError(f"Directory {API_HOST} not found")
 
-if not destination_file.parent.exists():
-    raise FileExistsError(f"Directory {destination_file.parent} not found")
+if not FILE_DIR.exists():
+    raise FileNotFoundError(f"Directory {FILE_DIR} not found")
+
+if not LOTOMANIA_ORIGIN_FILE.exists():
+    raise FileNotFoundError(f"File {LOTOMANIA_ORIGIN_FILE} not found")
+
+if not LOTOMANIA_DESTINATION_FILE.parent.exists():
+    raise FileExistsError(f"Directory {LOTOMANIA_DESTINATION_FILE.parent} not found")
+
