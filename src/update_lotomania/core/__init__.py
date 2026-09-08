@@ -1,4 +1,4 @@
-from .config import LOTOMANIA_DESTINATION_FILE, LOTOMANIA_ORIGIN_FILE
-from .subprocess import update_api
+from .config import OUTPUT_FILE_CSV, FILE_XLSX
+from .subprocess import handler_atualizar_sorteios
 
-__all__ = ['LOTOMANIA_DESTINATION_FILE', 'LOTOMANIA_ORIGIN_FILE', 'update_api']
+__all__ = ['OUTPUT_FILE_CSV', 'FILE_XLSX', 'handler_atualizar_sorteios']

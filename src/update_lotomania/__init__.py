@@ -1,7 +1,7 @@
 from csv_converter import csv_converter
-from .core import LOTOMANIA_ORIGIN_FILE, LOTOMANIA_DESTINATION_FILE, update_api
+from .core import FILE_XLSX, OUTPUT_FILE_CSV, handler_atualizar_sorteios
 
 def main() -> None:
-    csv_converter(LOTOMANIA_ORIGIN_FILE, LOTOMANIA_DESTINATION_FILE)
-    update_api()
+    csv_converter(FILE_XLSX, OUTPUT_FILE_CSV)
+    handler_atualizar_sorteios()
 

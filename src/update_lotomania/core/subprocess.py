@@ -2,9 +2,9 @@ import subprocess
 
 from .config import API_HOST
 
-__all__ = ['update_api']
+__all__ = ['handler_atualizar_sorteios']
 
-def update_api():
+def handler_atualizar_sorteios():
     compose_file = API_HOST / 'docker' / 'docker-compose.yml'
 
     subprocess.run(
