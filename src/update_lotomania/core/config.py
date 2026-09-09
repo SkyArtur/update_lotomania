@@ -1,25 +1,30 @@
 import os
 from pathlib import Path
 
-__all__ = ['API_HOST', 'FILE_DIR', 'LOTOMANIA_ORIGIN_FILE', 'LOTOMANIA_DESTINATION_FILE']
+__all__ = ['API_HOST', 'FILE_XLSX', 'OUTPUT_FILE_CSV']
 
-HOME = Path.home()
 
-API_HOST = HOME / 'Projetos' / 'GitHub' / 'API-Lotomania'
-FILE_DIR = HOME / 'Downloads' / 'Lotomania'
+local_files = Path(__file__).parent.parent.joinpath('files')
 
-LOTOMANIA_ORIGIN_FILE = FILE_DIR / 'Lotomania.xlsx'
-LOTOMANIA_DESTINATION_FILE = API_HOST / 'core' / 'data' / 'file' / 'lotomania.csv'
+API_HOST = os.getenv('API_LOTOMANIA_HOST')
+FILE_XLSX = os.getenv('FILE_LOTOMANIA_XLSX')
+
+if not API_HOST:
+    raise ValueError("API_LOTOMANIA_HOST is not defined in the environment variables")
+
+if not FILE_XLSX:
+    raise ValueError("FILE_LOTOMANIA_XLSX is not defined in the environment variables")
+
+API_HOST = Path(API_HOST)
+FILE_XLSX = Path(FILE_XLSX)
 
 if not API_HOST.exists():
     raise FileNotFoundError(f"Directory {API_HOST} not found")
 
-if not FILE_DIR.exists():
-    raise FileNotFoundError(f"Directory {FILE_DIR} not found")
+if not FILE_XLSX.exists():
+    raise FileNotFoundError(f"File {FILE_XLSX} not found")
 
-if not LOTOMANIA_ORIGIN_FILE.exists():
-    raise FileNotFoundError(f"File {LOTOMANIA_ORIGIN_FILE} not found")
+OUTPUT_FILE_CSV = API_HOST / 'core' / 'data' / 'file' / 'lotomania.csv'
 
-if not LOTOMANIA_DESTINATION_FILE.parent.exists():
-    raise FileExistsError(f"Directory {LOTOMANIA_DESTINATION_FILE.parent} not found")
-
+if not OUTPUT_FILE_CSV.parent.exists():
+    raise FileExistsError(f"Directory {OUTPUT_FILE_CSV.parent} not found")

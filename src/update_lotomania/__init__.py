@@ -1,7 +1,3 @@
-from csv_converter import csv_converter
-from .core import FILE_XLSX, OUTPUT_FILE_CSV, handler_atualizar_sorteios
+from .cli import main
 
-def main() -> None:
-    csv_converter(FILE_XLSX, OUTPUT_FILE_CSV)
-    handler_atualizar_sorteios()
-
+__all__ = ['main']

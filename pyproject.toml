@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-update-lotomania = "update_lotomania:main"
+update-lotomania = "update_lotomania.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.3,<0.13.0"]
